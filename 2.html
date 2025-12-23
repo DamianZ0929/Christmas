@@ -1,295 +1,128 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>聖誕快樂</title>
+<style>
+@charset "UTF-8";
+:root{--background:#3C3B3D;}
+html,body{position:relative;background:var(--background);height:100%;overflow:hidden;}
+
+/* 雪花容器 */
+.box{position:absolute;left:0;top:0;width:100vw;height:100vh;
+     transform:rotate(-45deg);overflow:hidden;}
+
+/* 跑馬燈外框 */
+.main{
+ position:absolute;top:20vh;left:50%;transform:translateX(-50%);
+ width:82vw;max-width:320px;height:120px;
+ background:transparent;font-family:Georgia,serif;
+ text-align:center;line-height:40px;color:aquamarine;
+ overflow:hidden;
+}
+.main div:nth-child(1){
+ position:absolute;top:0;left:0;width:100%;height:1px;
+ background:linear-gradient(to right,transparent,#0FF);
+ animation:run1 1s linear infinite;
+}
+.main div:nth-child(2){
+ position:absolute;top:0;right:0;width:1px;height:100%;
+ background:linear-gradient(to bottom,transparent,#0FF);
+ animation:run2 1s linear infinite .5s;
+}
+.main div:nth-child(3){
+ position:absolute;bottom:0;left:0;width:100%;height:1px;
+ background:linear-gradient(to left,transparent,#0FF);
+ animation:run3 1s linear infinite 1s;
+}
+.main div:nth-child(4){
+ position:absolute;bottom:0;left:0;width:1px;height:100%;
+ background:linear-gradient(to top,transparent,#0FF);
+ animation:run4 1s linear infinite 1.5s;
+}
+@keyframes run1{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+@keyframes run2{0%{transform:translateY(-100%)}100%{transform:translateY(100%)}}
+@keyframes run3{0%{transform:translateX(100%)}100%{transform:translateX(-100%)}}
+@keyframes run4{0%{transform:translateY(100%)}100%{transform:translateY(-100%)}}
+
+/* 星星 */
+body ul:nth-child(1){
+ position:absolute;top:12vh;left:50%;
+ width:1rem;height:1rem;border-radius:100%;
+ transform:translate(-50%,-50%);
+}
+body ul:nth-child(1) li{
+ position:absolute;width:0;height:0;
+ border:0 0.5rem 1rem 0.5rem solid transparent;
+ border-bottom-color:#FFCE54;
+ transform-origin:0.5rem 1rem;
+}
+body ul:nth-child(1) li:nth-child(1){transform:rotate(0deg)}
+body ul:nth-child(1) li:nth-child(2){transform:rotate(72deg)}
+body ul:nth-child(1) li:nth-child(3){transform:rotate(144deg)}
+body ul:nth-child(1) li:nth-child(4){transform:rotate(216deg)}
+body ul:nth-child(1) li:nth-child(5){transform:rotate(288deg)}
+
+/* 雪花軌道 */
+body ul:nth-child(2) li{
+ position:absolute;top:12vh;left:50%;
+ height:60vh;transform-origin:50% 0;
+}
+/* 雪花本身 */
+body ul:nth-child(2) li:before,
+body ul:nth-child(2) li:after{
+ content:"";position:absolute;top:0;
+ animation:fall 4s linear infinite;
+}
+body ul:nth-child(2) li:before{
+ width:1px;height:2.5rem;
+ background:linear-gradient(rgba(46,204,113,0),rgba(46,204,113,.5));
+}
+body ul:nth-child(2) li:after{
+ bottom:0;transform:translate(-50%,2.5rem);
+ width:5px;height:5px;border-radius:100%;background:#ffce54;
+}
+body ul:nth-child(2) li:nth-child(4n):after{background:#D8334A}
+body ul:nth-child(2) li:nth-child(4n+1):after{background:#FFCE54}
+body ul:nth-child(2) li:nth-child(4n+2):after{background:#2ECC71}
+body ul:nth-child(2) li:nth-child(4n+3):after{background:#5D9CEC}
+@keyframes fall{
+ 0%{opacity:0;top:0}5%{opacity:0}15%,90%{opacity:1}100%{opacity:0;top:100%}
+}
+
+/* 文字區塊 */
+.greet{
+ position:absolute;top:32vh;left:50%;transform:translateX(-50%);
+ font-size:5.5vw;color:#fff;font-family:cursive;text-align:center;
+ white-space:nowrap;
+}
+</style>
 </head>
-<link rel="stylesheet" href="./2.css">
-
 <body>
-  <div class="main">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <p style="position: absolute; top: 20px; left: 50%;">
-    <p style="font-family: cursive;font-size: 22px;">XXX，圣诞快乐</p>
-    <!-- Merry Christmas! -->
-     
-    </p>
-  </div>
-  <div class="box">
-    <ul>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
-    <ul>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
-  </div>
-  <script>
+<div class="main">
+  <div></div><div></div><div></div><div></div>
+</div>
 
-  </script>
+<!-- 星星 -->
+<ul>
+  <li></li><li></li><li></li><li></li><li></li>
+</ul>
+
+<!-- 雪花軌道（已簡化 50 條，夠用） -->
+<ul>
+  <li></li><li></li><li></li><li></li><li></li>
+  <li></li><li></li><li></li><li></li><li></li>
+  <li></li><li></li><li></li><li></li><li></li>
+  <li></li><li></li><li></li><li></li><li></li>
+  <li></li><li></li><li></li><li></li><li></li>
+  <li></li><li></li><li></li><li></li><li></li>
+  <li></li><li></li><li></li><li></li><li></li>
+  <li></li><li></li><li></li><li></li><li></li>
+  <li></li><li></li><li></li><li></li><li></li>
+  <li></li><li></li><li></li><li></li><li></li>
+</ul>
+
+<div class="greet">XXX，圣诞快乐</div>
 </body>
-
 </html>
