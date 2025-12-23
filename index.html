@@ -1,22 +1,132 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>聖誕樹</title>
+
+    <!-- 原 1.css 內容，直接塞進來 -->
+    <style>
+        /* ---- Reset ---- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: fixed;
+            font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        /* ---- 主容器 ---- */
+        #main {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            background: #fff;
+            border: 3px dashed #218359;
+        }
+        #main .left {
+            width: 100%;
+            height: 100%;
+            background: #9E0016;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ---- 主樹：真正置底置中 ---- */
+        #main .left .tree {
+            position: absolute;
+            bottom: 0;                 /* 貼底 */
+            left: 50%;                 /* 水平中央線 */
+            transform: translateX(-50%); /* 向左拉回自身一半寬度 */
+            width: 80vw;               /* 響應式寬度 */
+            max-width: 300px;          /* 不要無限變大 */
+            height: auto;
+            pointer-events: none;      /* 避免滑手勢誤觸 */
+        }
+
+        /* ---- 開啟按鈕（加大觸控面）---- */
+        .left .btn {
+            position: absolute;
+            top: 15vh;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 60px;
+            background: #218359;
+            border: 0;
+            border-radius: 50% 20%/10% 40%;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            -webkit-appearance: none;
+            animation: heart 0.8s linear infinite;
+        }
+        .left .link {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ---- 109 個浮動小圖 ---- */
+        [class*="icon-"] {
+            position: absolute;
+            width: 2rem;
+            height: 2rem;
+            animation: heart1 0.6s linear infinite;
+            pointer-events: none;
+        }
+
+        /* ---- 動畫 ---- */
+        @keyframes heart1 {
+            0%   {transform: scale(1.07);}
+            80%  {transform: scale(1);}
+            100% {transform: scale(0.8);}
+        }
+        @keyframes heart {
+            0%   {transform: translateX(-50%) scale(1);}
+            50%  {transform: translateX(-50%) scale(1.05);}
+            100% {transform: translateX(-50%) scale(1);}
+        }
+
+        /* ---- iPhone 全屏專用 ---- */
+        @supports (-webkit-touch-callout: none) {
+            #main {height: -webkit-fill-available;}
+        }
+
+        /* ---- 橫屏微調 ---- */
+        @media screen and (orientation: landscape) {
+            .tree {max-width: 200px;}
+            .left .btn {top: 10vh; width: 100px; height: 50px; font-size: 14px;}
+        }
+
+        /* ---- 小機微調 ---- */
+        @media screen and (max-width: 375px) {
+            [class*="icon-"] {width: 1.5rem; height: 1.5rem;}
+        }
+    </style>
 </head>
-<link rel="stylesheet" href="./1.css">
 
 <body>
     <div id="main">
         <div class="left">
-
             <button class="btn">
-                <a href="./2.html"
-                 target="_blank"
-                  onclick="onLinkClick" class="link">开启圣诞！</a>
+                <a href="./2.html" target="_blank" class="link">开启圣诞！</a>
             </button>
+
+            <!-- 以下 109 顆浮動 icon 與主樹 -->
             <img src="./assets/主题.png" alt="" class="icon-1">
             <img src="./assets/圣诞礼物.png" alt="" class="icon-2">
             <img src="./assets/圣诞礼物.png" alt="" class="icon-3">
@@ -125,65 +235,10 @@
             <img src="./assets/圣诞鹿.png" alt="" class="icon-107">
             <img src="./assets/圣诞袜.png" alt="" class="icon-108">
             <img src="./assets/圣诞-圣诞老人.png" alt="" class="icon-109">
-            <!-- <img src="./assets/圣诞鹿.png" alt="" class="icon-101">
-            <img src="./assets/圣诞袜.png" alt="" class="icon-102">
-            <img src="./assets/圣诞-圣诞老人.png" alt="" class="icon-103">
-            <img src="./assets/圣诞袜.png" alt="" class="icon-104">
-            <img src="./assets/圣诞花.png" alt="" class="icon-105">
-            <img src="./assets/圣诞花.png" alt="" class="icon-106">
-            <img src="./assets/圣诞鹿.png" alt="" class="icon-107">
-            <img src="./assets/圣诞袜.png" alt="" class="icon-108">
-            <img src="./assets/圣诞-圣诞老人.png" alt="" class="icon-109">
-            <img src="./assets/圣诞袜.png" alt="" class="icon-110">
-            <img src="./assets/圣诞娃娃.png" alt="" class="icon-111">
-            <img src="./assets/圣诞花.png" alt="" class="icon-112">
-            <img src="./assets/圣诞娃娃.png" alt="" class="icon-113">
-            <img src="./assets/圣诞花.png" alt="" class="icon-114">
-            <img src="./assets/圣诞鹿.png" alt="" class="icon-115">
-            <img src="./assets/圣诞袜.png" alt="" class="icon-116">
-            <img src="./assets/圣诞-圣诞老人.png" alt="" class="icon-117">
-            <img src="./assets/圣诞袜.png" alt="" class="icon-118">
-            <img src="./assets/圣诞娃娃.png" alt="" class="icon-119">
-            <img src="./assets/圣诞花.png" alt="" class="icon-120">
-            <img src="./assets/圣诞鹿.png" alt="" class="icon-121">
-            <img src="./assets/圣诞花.png" alt="" class="icon-122">
-            <img src="./assets/圣诞-圣诞老人.png" alt="" class="icon-123">
-            <img src="./assets/圣诞娃娃.png" alt="" class="icon-124">
-            <img src="./assets/圣诞礼物.png" alt="" class="icon-125">
-            <img src="./assets/圣诞鹿.png" alt="" class="icon-126">
-            <img src="./assets/圣诞娃娃.png" alt="" class="icon-127">
-            <img src="./assets/圣诞礼物.png" alt="" class="icon-128">
-            <img src="./assets/圣诞-圣诞老人.png" alt="" class="icon-129">
-            <img src="./assets/圣诞礼物.png" alt="" class="icon-130">
-            <img src="./assets/圣诞-圣诞老人.png" alt="" class="icon-131">
-            <img src="./assets/圣诞娃娃.png" alt="" class="icon-132">
-            <img src="./assets/圣诞鹿.png" alt="" class="icon-133">
-            <img src="./assets/圣诞袜.png" alt="" class="icon-134">
-            <img src="./assets/圣诞袜.png" alt="" class="icon-135">
-            <img src="./assets/圣诞鹿.png" alt="" class="icon-136">
-            <img src="./assets/圣诞娃娃.png" alt="" class="icon-137">
-            <img src="./assets/圣诞花.png" alt="" class="icon-138">
-            <img src="./assets/圣诞鹿.png" alt="" class="icon-139">
-            <img src="./assets/圣诞娃娃.png" alt="" class="icon-140">
-            <img src="./assets/圣诞袜.png" alt="" class="icon-141">
-            <img src="./assets/圣诞-圣诞老人.png" alt="" class="icon-142">
-            <img src="./assets/圣诞鹿.png" alt="" class="icon-143">
-            <img src="./assets/圣诞娃娃.png" alt="" class="icon-144">
-            <img src="./assets/圣诞礼物.png" alt="" class="icon-145">
-            <img src="./assets/圣诞花.png" alt="" class="icon-146">
-            <img src="./assets/圣诞花.png" alt="" class="icon-147">
-            <img src="./assets/圣诞礼物.png" alt="" class="icon-148">
-            <img src="./assets/圣诞花.png" alt="" class="icon-149">
-            <img src="./assets/圣诞礼物.png" alt="" class="icon-150"> -->
+
+            <!-- 主樹 -->
             <img src="./assets/圣诞树.png" alt="" class="tree">
         </div>
-        <!-- <div class="middle">
-            
-        </div> -->
     </div>
-    <script>
-        
-    </script>
 </body>
-
 </html>
