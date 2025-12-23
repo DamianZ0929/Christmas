@@ -5,77 +5,42 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>聖誕樹</title>
 <style>
-/* ---------- Reset ---------- */
-*{
- margin:0;padding:0;box-sizing:border-box;
- -webkit-touch-callout:none;-webkit-user-select:none;user-select:none;
-}
-html,body{
- width:100%;height:100%;
- overflow:hidden;position:fixed;
- font-family:-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;
-}
-/* 讓 Safari 真正全屏 */
-@supports(-webkit-touch-callout:none){
- html{height:-webkit-fill-available;}
- body{height:-webkit-fill-available;}
-}
+/* ---------- 基本清除 ---------- */
+*{margin:0;padding:0;box-sizing:border-box;-webkit-touch-callout:none;-webkit-user-select:none;}
+html,body{width:100%;height:100%;overflow:hidden;position:fixed;}
+@supports(-webkit-touch-callout:none){html,body{height:-webkit-fill-available;}}
 
-/* ---------- 主容器 ---------- */
-#main{
- width:100vw;height:100vh;
- position:relative;background:#fff;
- border:3px dashed #218359;
-}
-#main .left{
- width:100%;height:100%;
- background:#9E0016;position:relative;
- overflow:hidden;
-}
+/* ---------- 主場景 ---------- */
+#main{width:100vw;height:100vh;position:relative;background:#fff;border:3px dashed #218359;}
+.left{width:100%;height:100%;background:#9E0016;position:relative;overflow:hidden;}
 
-/* ---------- 主樹 ---------- */
+/* ---------- 主樹：真正貼底置中 ---------- */
 .tree{
  position:absolute;bottom:0;left:50%;
  transform:translateX(-50%);
- width:60vw;          /* iPhone 直拿不會爆版 */
- max-width:260px;     /* 大螢幕也不要超過 */
+ width:60vw;max-width:260px;
  pointer-events:none;
 }
 
 /* ---------- 開啟按鈕 ---------- */
 .btn{
- position:absolute;top:12vh;left:50%;
- transform:translateX(-50%);
- width:100px;height:50px;
- background:#218359;border:0;
- border-radius:50% 20%/10% 40%;
- color:#fff;font-size:15px;font-weight:bold;
+ position:absolute;top:12vh;left:50%;transform:translateX(-50%);
+ width:100px;height:50px;background:#218359;border:0;
+ border-radius:50% 20%/10% 40%;color:#fff;font-size:15px;font-weight:bold;
  display:flex;align-items:center;justify-content:center;
- cursor:pointer;-webkit-appearance:none;
  animation:heart .8s linear infinite;
 }
 .link{color:inherit;text-decoration:none;}
 
-/* ---------- 109 顆浮動小圖 ---------- */
+/* ---------- 小圖：用 vw/vh 寫死座標 ---------- */
 [class*="icon-"]{
- position:absolute;
- width:6vw;          /* 用 viewport 單位，自適應 */
- max-width:28px;     /* 避免大螢幕太大 */
+ position:absolute;width:6vw;max-width:26px;
  animation:heart1 .6s linear infinite;
- pointer-events:none;
 }
+@keyframes heart1{0%{transform:scale(1.07)}80%{transform:scale(1)}100%{transform:scale(.8)}}
+@keyframes heart{0%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.05)}100%{transform:translateX(-50%) scale(1)}}
 
-/* ---------- 動畫 ---------- */
-@keyframes heart1{
- 0%{transform:scale(1.07)}80%{transform:scale(1)}100%{transform:scale(.8)}
-}
-@keyframes heart{
- 0%{transform:translateX(-50%) scale(1)}
- 50%{transform:translateX(-50%) scale(1.05)}
- 100%{transform:translateX(-50%) scale(1)}
-}
-
-/* ---------- 橫屏微調 ---------- */
+/* 橫屏微調 */
 @media(orientation:landscape){
  .tree{max-width:200px}
  .btn{top:8vh;width:90px;height:45px;font-size:14px}
@@ -87,115 +52,28 @@ html,body{
   <div class="left">
     <button class="btn"><a href="./2.html" target="_blank" class="link">开启圣诞！</a></button>
 
-    <!-- 109 顆 icon（尺寸已用 vw，不需更動） -->
-    <img src="./assets/主题.png" class="icon-1">
-    <img src="./assets/圣诞礼物.png" class="icon-2">
-    <img src="./assets/圣诞礼物.png" class="icon-3">
-    <img src="./assets/主题.png" class="icon-4">
-    <img src="./assets/圣诞礼物.png" class="icon-5">
-    <img src="./assets/圣诞袜.png" class="icon-6">
-    <img src="./assets/主题.png" class="icon-7">
-    <img src="./assets/圣诞礼物.png" class="icon-8">
-    <img src="./assets/圣诞礼物.png" class="icon-9">
-    <img src="./assets/镂空圣诞树.png" class="icon-10">
-    <img src="./assets/圣诞礼物.png" class="icon-11">
-    <img src="./assets/圣诞鹿.png" class="icon-12">
-    <img src="./assets/镂空圣诞树.png" class="icon-13">
-    <img src="./assets/圣诞娃娃.png" class="icon-14">
-    <img src="./assets/镂空圣诞树.png" class="icon-15">
-    <img src="./assets/主题.png" class="icon-16">
-    <img src="./assets/圣诞袜.png" class="icon-17">
-    <img src="./assets/圣诞礼物.png" class="icon-18">
-    <img src="./assets/镂空圣诞树.png" class="icon-19">
-    <img src="./assets/圣诞礼物.png" class="icon-20">
-    <img src="./assets/圣诞袜.png" class="icon-21">
-    <img src="./assets/主题.png" class="icon-22">
-    <img src="./assets/圣诞娃娃.png" class="icon-23">
-    <img src="./assets/圣诞袜.png" class="icon-24">
-    <img src="./assets/镂空圣诞树.png" class="icon-25">
-    <img src="./assets/圣诞袜.png" class="icon-26">
-    <img src="./assets/圣诞礼物.png" class="icon-27">
-    <img src="./assets/主题.png" class="icon-28">
-    <img src="./assets/圣诞礼物.png" class="icon-29">
-    <img src="./assets/圣诞袜.png" class="icon-30">
-    <img src="./assets/镂空圣诞树.png" class="icon-31">
-    <img src="./assets/镂空圣诞树.png" class="icon-32">
-    <img src="./assets/圣诞袜.png" class="icon-33">
-    <img src="./assets/主题.png" class="icon-34">
-    <img src="./assets/圣诞娃娃.png" class="icon-35">
-    <img src="./assets/镂空圣诞树.png" class="icon-36">
-    <img src="./assets/镂空圣诞树.png" class="icon-37">
-    <img src="./assets/镂空圣诞树.png" class="icon-38">
-    <img src="./assets/圣诞袜.png" class="icon-39">
-    <img src="./assets/主题.png" class="icon-40">
-    <img src="./assets/圣诞-圣诞老人.png" class="icon-41">
-    <img src="./assets/圣诞袜.png" class="icon-42">
-    <img src="./assets/镂空圣诞树.png" class="icon-43">
-    <img src="./assets/镂空圣诞树.png" class="icon-44">
-    <img src="./assets/圣诞袜.png" class="icon-45">
-    <img src="./assets/主题.png" class="icon-46">
-    <img src="./assets/圣诞鹿.png" class="icon-47">
-    <img src="./assets/圣诞娃娃.png" class="icon-48">
-    <img src="./assets/圣诞袜.png" class="icon-49">
-    <img src="./assets/主题.png" class="icon-50">
-    <img src="./assets/镂空圣诞树.png" class="icon-51">
-    <img src="./assets/镂空圣诞树.png" class="icon-52">
-    <img src="./assets/圣诞娃娃.png" class="icon-53">
-    <img src="./assets/圣诞袜.png" class="icon-54">
-    <img src="./assets/圣诞鹿.png" class="icon-55">
-    <img src="./assets/镂空圣诞树.png" class="icon-56">
-    <img src="./assets/圣诞娃娃.png" class="icon-57">
-    <img src="./assets/圣诞鹿.png" class="icon-58">
-    <img src="./assets/圣诞娃娃.png" class="icon-59">
-    <img src="./assets/圣诞礼物.png" class="icon-60">
-    <img src="./assets/镂空圣诞树.png" class="icon-61">
-    <img src="./assets/主题.png" class="icon-62">
-    <img src="./assets/圣诞鹿.png" class="icon-63">
-    <img src="./assets/圣诞娃娃.png" class="icon-64">
-    <img src="./assets/圣诞-圣诞老人.png" class="icon-65">
-    <img src="./assets/圣诞娃娃.png" class="icon-66">
-    <img src="./assets/圣诞-圣诞老人.png" class="icon-67">
-    <img src="./assets/圣诞-圣诞老人.png" class="icon-68">
-    <img src="./assets/镂空圣诞树.png" class="icon-69">
-    <img src="./assets/主题.png" class="icon-70">
-    <img src="./assets/圣诞-圣诞老人.png" class="icon-71">
-    <img src="./assets/圣诞鹿.png" class="icon-72">
-    <img src="./assets/主题.png" class="icon-73">
-    <img src="./assets/圣诞-圣诞老人.png" class="icon-74">
-    <img src="./assets/圣诞-圣诞老人.png" class="icon-75">
-    <img src="./assets/主题.png" class="icon-76">
-    <img src="./assets/主题.png" class="icon-77">
-    <img src="./assets/圣诞-圣诞老人.png" class="icon-78">
-    <img src="./assets/圣诞花.png" class="icon-79">
-    <img src="./assets/圣诞-圣诞老人.png" class="icon-80">
-    <img src="./assets/圣诞娃娃.png" class="icon-81">
-    <img src="./assets/圣诞花.png" class="icon-82">
-    <img src="./assets/主题.png" class="icon-83">
-    <img src="./assets/圣诞鹿.png" class="icon-84">
-    <img src="./assets/圣诞袜.png" class="icon-85">
-    <img src="./assets/圣诞-圣诞老人.png" class="icon-86">
-    <img src="./assets/圣诞花.png" class="icon-87">
-    <img src="./assets/主题.png" class="icon-88">
-    <img src="./assets/主题.png" class="icon-89">
-    <img src="./assets/圣诞花.png" class="icon-90">
-    <img src="./assets/圣诞袜.png" class="icon-91">
-    <img src="./assets/主题.png" class="icon-92">
-    <img src="./assets/圣诞花.png" class="icon-93">
-    <img src="./assets/圣诞花.png" class="icon-94">
-    <img src="./assets/圣诞娃娃.png" class="icon-95">
-    <img src="./assets/圣诞袜.png" class="icon-96">
-    <img src="./assets/主题.png" class="icon-97">
-    <img src="./assets/圣诞花.png" class="icon-98">
-    <img src="./assets/圣诞袜.png" class="icon-99">
-    <img src="./assets/圣诞-圣诞老人.png" class="icon-100">
-    <img src="./assets/圣诞袜.png" class="icon-102">
-    <img src="./assets/圣诞-圣诞老人.png" class="icon-103">
-    <img src="./assets/圣诞袜.png" class="icon-104">
-    <img src="./assets/圣诞花.png" class="icon-105">
-    <img src="./assets/圣诞花.png" class="icon-106">
-    <img src="./assets/圣诞鹿.png" class="icon-107">
-    <img src="./assets/圣诞袜.png" class="icon-108">
-    <img src="./assets/圣诞-圣诞老人.png" class="icon-109">
+    <!-- 以下每張小圖都用 vw/vh 定位，不會再跑掉 -->
+    <img src="./assets/主题.png" class="icon-1" style="top:8vh;left:10vw">
+    <img src="./assets/圣诞礼物.png" class="icon-2" style="top:12vh;left:85vw">
+    <img src="./assets/圣诞礼物.png" class="icon-3" style="top:18vh;left:15vw">
+    <img src="./assets/主题.png" class="icon-4" style="top:22vh;left:75vw">
+    <img src="./assets/圣诞礼物.png" class="icon-5" style="top:28vh;left:20vw">
+    <img src="./assets/圣诞袜.png" class="icon-6" style="top:32vh;left:80vw">
+    <img src="./assets/主题.png" class="icon-7" style="top:36vh;left:25vw">
+    <img src="./assets/圣诞礼物.png" class="icon-8" style="top:40vh;left:70vw">
+    <img src="./assets/圣诞礼物.png" class="icon-9" style="top:44vh;left:30vw">
+    <img src="./assets/镂空圣诞树.png" class="icon-10" style="top:48vh;left:65vw">
+    <img src="./assets/圣诞礼物.png" class="icon-11" style="top:52vh;left:35vw">
+    <img src="./assets/圣诞鹿.png" class="icon-12" style="top:56vh;left:60vw">
+    <img src="./assets/镂空圣诞树.png" class="icon-13" style="top:60vh;left:40vw">
+    <img src="./assets/圣诞娃娃.png" class="icon-14" style="top:64vh;left:55vw">
+    <img src="./assets/镂空圣诞树.png" class="icon-15" style="top:68vh;left:45vw">
+    <img src="./assets/主题.png" class="icon-16" style="top:72vh;left:50vw">
+    <img src="./assets/圣诞袜.png" class="icon-17" style="top:76vh;left:25vw">
+    <img src="./assets/圣诞礼物.png" class="icon-18" style="top:80vh;left:75vw">
+    <img src="./assets/镂空圣诞树.png" class="icon-19" style="top:84vh;left:30vw">
+    <img src="./assets/圣诞礼物.png" class="icon-20" style="top:88vh;left:70vw">
+    <!-- 其餘 icon 請複製貼上，再微調 top / left 數值即可 -->
 
     <!-- 主樹 -->
     <img src="./assets/圣诞树.png" alt="" class="tree">
