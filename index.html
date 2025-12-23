@@ -32,9 +32,10 @@ html,body{width:100%;height:100%;overflow:hidden;position:fixed;}
 }
 .link{color:inherit;text-decoration:none;}
 
-/* ---------- 小圖：用 vw/vh 寫死座標 ---------- */
-[class*="icon-"]{
- position:absolute;width:6vw;max-width:26px;
+/* ---------- 小圖：先藏 ---------- */
+.decoration{
+ position:absolute;
+ display:none;
  animation:heart1 .6s linear infinite;
 }
 @keyframes heart1{0%{transform:scale(1.07)}80%{transform:scale(1)}100%{transform:scale(.8)}}
@@ -50,34 +51,72 @@ html,body{width:100%;height:100%;overflow:hidden;position:fixed;}
 <body>
 <div id="main">
   <div class="left">
-    <button class="btn"><a href="./2.html" target="_blank" class="link">开启圣诞！</a></button>
+    <button class="btn"><a href="./2.html" target="_blank" class="link">开启卡片！</a></button>
 
-    <!-- 以下每張小圖都用 vw/vh 定位，不會再跑掉 -->
-    <img src="./assets/主题.png" class="icon-1" style="top:8vh;left:10vw">
-    <img src="./assets/圣诞礼物.png" class="icon-2" style="top:12vh;left:85vw">
-    <img src="./assets/圣诞礼物.png" class="icon-3" style="top:18vh;left:15vw">
-    <img src="./assets/主题.png" class="icon-4" style="top:22vh;left:75vw">
-    <img src="./assets/圣诞礼物.png" class="icon-5" style="top:28vh;left:20vw">
-    <img src="./assets/圣诞袜.png" class="icon-6" style="top:32vh;left:80vw">
-    <img src="./assets/主题.png" class="icon-7" style="top:36vh;left:25vw">
-    <img src="./assets/圣诞礼物.png" class="icon-8" style="top:40vh;left:70vw">
-    <img src="./assets/圣诞礼物.png" class="icon-9" style="top:44vh;left:30vw">
-    <img src="./assets/镂空圣诞树.png" class="icon-10" style="top:48vh;left:65vw">
-    <img src="./assets/圣诞礼物.png" class="icon-11" style="top:52vh;left:35vw">
-    <img src="./assets/圣诞鹿.png" class="icon-12" style="top:56vh;left:60vw">
-    <img src="./assets/镂空圣诞树.png" class="icon-13" style="top:60vh;left:40vw">
-    <img src="./assets/圣诞娃娃.png" class="icon-14" style="top:64vh;left:55vw">
-    <img src="./assets/镂空圣诞树.png" class="icon-15" style="top:68vh;left:45vw">
-    <img src="./assets/主题.png" class="icon-16" style="top:72vh;left:50vw">
-    <img src="./assets/圣诞袜.png" class="icon-17" style="top:76vh;left:25vw">
-    <img src="./assets/圣诞礼物.png" class="icon-18" style="top:80vh;left:75vw">
-    <img src="./assets/镂空圣诞树.png" class="icon-19" style="top:84vh;left:30vw">
-    <img src="./assets/圣诞礼物.png" class="icon-20" style="top:88vh;left:70vw">
-    <!-- 其餘 icon 請複製貼上，再微調 top / left 數值即可 -->
+    <!-- 20 個空標籤，等 JS 隨機填圖 -->
+    <img class="decoration">
+    <img class="decoration">
+    <img class="decoration">
+    <img class="decoration">
+    <img class="decoration">
+    <img class="decoration">
+    <img class="decoration">
+    <img class="decoration">
+    <img class="decoration">
+    <img class="decoration">
+    <img class="decoration">
+    <img class="decoration">
+    <img class="decoration">
+    <img class="decoration">
+    <img class="decoration">
+    <img class="decoration">
+    <img class="decoration">
+    <img class="decoration">
+    <img class="decoration">
+    <img class="decoration">
 
     <!-- 主樹 -->
     <img src="./assets/圣诞树.png" alt="" class="tree">
   </div>
 </div>
+
+<script>
+/* ========= 裝飾圖池子（不含主樹） ========= */
+const pool = [
+  "主题.png",
+  "圣诞-圣诞老人.png",
+  "圣诞礼物.png",
+  "圣诞花.png",
+  "圣诞娃娃.png",
+  "圣诞贺卡.png",
+  "圣诞袜.png",
+  "圣诞鹿.png",
+  "镂空圣诞树.png"
+];
+
+/* ========= 隨機散落 + 每 4 秒再飛 ========= */
+function randomFloat(min, max) {
+  return Math.random() * (max - min) + min;
+}
+function shuffle(arr) {
+  return arr.sort(() => Math.random() - 0.5);
+}
+function scatterIcons() {
+  const icons = document.querySelectorAll('.decoration');
+  // 每次洗牌後取前 20 張
+  const picks = shuffle([...pool]);
+  icons.forEach((img, i) => {
+    img.src = `./assets/${picks[i % picks.length]}`;
+    img.style.top    = randomFloat(5, 85) + 'vh';
+    img.style.left   = randomFloat(5, 85) + 'vw';
+    img.style.width  = randomFloat(4, 8) + 'vw';
+    img.style.display= 'block';
+  });
+}
+document.addEventListener('DOMContentLoaded', () => {
+  scatterIcons();
+  setInterval(scatterIcons, 4000);
+});
+</script>
 </body>
 </html>
